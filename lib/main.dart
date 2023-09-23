@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:islamic/Hadeth/Hadeth_details.dart';
 import 'package:islamic/Home_Screen.dart';
@@ -7,17 +8,26 @@ import 'package:islamic/Quran/Sura_details.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/splash_screen.dart';
 import 'package:provider/provider.dart';
-void main(){
+import 'package:shared_preferences/shared_preferences.dart';
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppConfigProvider.init();
+
   runApp(ChangeNotifierProvider(
     create: (context) =>AppConfigProvider(),
       child: MyApp()));
 }
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var provider=Provider.of<AppConfigProvider>(context);
-   return MaterialApp(locale:Locale(provider.appLanguage),
-themeMode:provider.appTheme,
+   return MaterialApp(locale:Locale(AppConfigProvider.getAppLanguage('AppLanguage')??provider.appLanguage),
+     themeMode:provider.appTheme,
      darkTheme:MyTheme.dark_theme,
      localizationsDelegates: AppLocalizations.localizationsDelegates,
      supportedLocales: AppLocalizations.supportedLocales,
