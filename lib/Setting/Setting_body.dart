@@ -37,7 +37,7 @@ class _SettingState extends State<Setting> {
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(style:Theme.of(context).textTheme.titleSmall
-                      ,AppConfigProvider.getAppLanguage('AppLanguage')=='ar'?AppLocalizations.of(context)!.arabic:
+                      ,provider.appLanguage=='ar'?AppLocalizations.of(context)!.arabic:
                   AppLocalizations.of(context)!.english),
                   Icon(Icons.arrow_drop_down_outlined,size: 30,)
                 ],
