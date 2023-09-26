@@ -38,7 +38,7 @@ class AppConfigProvider extends ChangeNotifier  {
    setChangeTheming()  async {
     if(appTheme==ThemeMode.light){
       prefs.setBool('ChangeTheming', true);
-    }else if (appTheme==ThemeMode.dark)
+    }else
     {prefs.setBool('ChangeTheming', false);
 
     };
@@ -46,14 +46,13 @@ class AppConfigProvider extends ChangeNotifier  {
   }
  getChangeTheming()   {
     if(prefs.getBool('ChangeTheming')==true){
-        appTheme=ThemeMode.light;
-        return appTheme;
+        return ThemeMode.light;
     }else if(prefs.getBool('ChangeTheming')==false) {
-    appTheme=ThemeMode.dark;
-    return appTheme;
+
+    return ThemeMode.dark;
 
     }else{
-      return appTheme=ThemeMode.light;
+      return ThemeMode.light;
     }
 
 
