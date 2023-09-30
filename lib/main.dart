@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var provider=Provider.of<AppConfigProvider>(context);
-   return MaterialApp(locale:Locale(AppConfigProvider.getAppLanguage('AppLanguage')??provider.appLanguage),
+   return MaterialApp(locale:Locale(provider.appLanguage),
      themeMode:provider.appTheme,
      darkTheme:MyTheme.dark_theme,
      localizationsDelegates: AppLocalizations.localizationsDelegates,
